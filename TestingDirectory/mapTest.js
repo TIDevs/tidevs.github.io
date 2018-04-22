@@ -98,13 +98,7 @@ function createMarker(place) {
         push_lat_long(firebase.auth().currentUser.uid, marker.getPosition().lat(), marker.getPosition().lng(), marker.name);
 
 
-        if(marker.name="Kit Ng Family Foundation") {
-            window.location.href = 'https://fa.morganstanley.com/kit.ng/index.htm';
-        } else if(marker.name="Unique Artists Foundation"){
-            window.location.href = 'https://www.foundationforcontemporaryarts.org/';
-        } else {
-            window.location.href = 'info.html';
-        }
+        alert(marker.name);
 
 
 
