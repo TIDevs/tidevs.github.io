@@ -4,7 +4,7 @@ $(document).ready(function () {
     if($("#InputPassword1").val()!=$("#InputPassword2").val()){
       $("#m_alert").css("visibility", "visible");
     } else {
-      sign_up($("#InputEmail1").val(), $("#InputPassword1").val(), false);
+      sign_up($("#InputEmail1").val(), $("#InputPassword1").val(), true, $("#orgName").val());
     }
   });
   $("#sign_button_2").click(function() {
@@ -14,7 +14,7 @@ $(document).ready(function () {
     $("#m_alert").css("visibility", "hidden");
   })
 
-  async function sign_up(email, password, special) {
+  async function sign_up(email, password, special, orgName) {
     await firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -27,12 +27,10 @@ $(document).ready(function () {
       // alert(special);
       if (special){
         firebase.database().ref(location).child("special").set(true);
+        firebase.database().ref(location).child("orgName").set(orgName);
       } else {
         firebase.database().ref(location).child("special").set(false);
       }
-
     }
-    // alert("signed up successfully");
   }
-
 });

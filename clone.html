@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+      width:100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBo1SVIdz-yZgtwywUzP6yzowYMmu83GOA",
+        authDomain: "paragon-90da5.firebaseapp.com",
+        databaseURL: "https://paragon-90da5.firebaseio.com",
+        projectId: "paragon-90da5",
+        storageBucket: "paragon-90da5.appspot.com",
+        messagingSenderId: "816994065852"
+      };
+    firebase.initializeApp(config);
+  </script>
+  <script src="firebase_functions.js"> </script>
+  <script src = "TestingDirectory/mapTest.js">
+  </script>
+
+
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="homepage.css">
+  <title> HomePage </title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Homepage of Paragon. This will help you find and donate to nearby charities.">
+  <style></style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="clone.js"> </script>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:100px">
+  <a class="navbar-brand" href="#">
+      <div class="media">
+        <img class="mr-3" src="paragon.png" style="height:100px"></img>
+      </div>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width:200px">
+      <button id="signup" type="submit" class="btn btn-secondary" style="width:100px; margin-left:80%">Sign Up</button>
+      <button id="login" type="submit" class="btn btn-primary" style="width:100px">Login</button>
+  </div>
+</nav>
+  <div class="container-fluid" style="margin-left:-10px; width:100%;">
+    <div class="row">
+      <div class="col" style="width:300px">
+
+      </div>
+      <div class="col-1" style="height: 80%">
+
+      </div>
+      <div class="col-10" ></div>
+    </div>
+  </div>
+  <div id="map"></div>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1TGTb7Khf0s7nhhjkpw97_F4bk6wKKME&libraries=places&callback=initMap">
+  </script>
+</body>
+</html>
