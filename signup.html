@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Sign Up</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="signup.js"> </script>
+  </head>
+  <body>
+    <div id="login_div" align="center" style="margin-top:100px">
+      <div id="m_alert" class="alert alert-danger alert-dismissable fade show" role="alert" style="visibility:hidden">
+        Passwords do not match
+        <div id="close" type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;<span>
+        </div>
+      </div>
+      <h1 style="margin:50px">Sign Up</h1>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="align-self:center; width:500px">
+          <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="InputPassword1" placeholder="Password" style="width:500px">
+          <label for="exampleInputPassword2">Reenter Password</label>
+          <input type="password" class="form-control" id="InputPassword2" placeholder="Password" style="width:500px">
+        </div>
+        <div id="sign_button" class="btn btn-primary">Sign Up</div>
+      </form>
+    </div>
+  </body>
+</html>

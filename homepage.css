@@ -1,0 +1,32 @@
+.input-area{
+  margin-top: 10px;
+}
+
+#search{
+  margin: 10px;
+  width: 280px;
+}
+
+#trending{
+  margin: 10px;
+  width: 135px;
+  float: center;
+}
+
+#trending, #suggestions{
+  width: 135px;
+  float: center;
+}
+
+#login{
+  margin: 5px;
+  width: 150px;
+  float: right;
+}
+
+#signup{
+  margin: 5px;
+  margin-left: 90%;
+  width: 150px;
+  float: right;
+}

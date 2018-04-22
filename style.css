@@ -1,0 +1,11 @@
+#map{
+  height: 90%;
+  width: 90%;
+}
+
+#login_div {
+  width:50%;
+  align-self: center;
+  margin: auto;
+  margin-top: 10%;
+}
