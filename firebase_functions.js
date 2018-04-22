@@ -6,26 +6,11 @@ function login(email, password) {
     var errorMessage = error.message;
     alert(errorMessage)
   });
-
-  var charity_sign = firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/is_special');
-  await charity_sign.once("value").then(function(snapshot){
-    var special = snapshot.val();
-  });
-
-  if(special){
-    //window.location.href =
-  }
-  else{
-    //window.location.href =
-  }
-
-
-
-
   donate("random3");
   createDonationRequest("yoo", 2, 2, "random", "nanoseed")
-  // generate_possible_events();
-  getRecommendations()
+  test_donation_history_dict = {"troll": 5, "breh": 3, "yo": 2};
+  test_possible_events = [{"unb":"r"}, {"type": "troll"}, {"type": "troll"}, {"type": "troll"}, {"type": "troll"}, {"type": "troll"}, {"type": "troll"}, {"type": "breh"}, {"type": "eee"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}, {"type": "breh"}];
+  console.log(getRecommendations(test_donation_history_dict, test_possible_events));
   alert("here");
   add_listeners();
 }
@@ -43,11 +28,6 @@ function sign_up() {
   });
 }
 
-
-function admin_sign_up(){
-    firebase.auth().
-}
-
 function add_listeners() {
   document.getElementById("login_button").onclick = function() {
     login();
@@ -60,9 +40,6 @@ function add_listeners() {
 window.onload = function() {
   add_listeners();
 }
-
-
-
 
 
 async function donate(item_tag) {
@@ -90,7 +67,8 @@ function createDonationRequest(req, lat, lang, type, org) {
 
 function getRecommendations(donation_history_dict, possible_events) { // Sorted array of event objects, decreasing order of trend
   var max = Object.keys(donation_history_dict).reduce(function(a, b){ return donation_history_dict[a] > donation_history_dict[b] ? a : b });
-  var donation_history_dict_2 = _objectWithoutProperties(donation_history_dict, [str(max)])
+  var donation_history_dict_2 = Object.assign({}, donation_history_dict);
+  delete donation_history_dict_2[max]
   var max_2 = Object.keys(donation_history_dict_2).reduce(function(a, b){ return donation_history_dict_2[a] > donation_history_dict_2[b] ? a : b });
 
   var counter = 0;
@@ -98,40 +76,45 @@ function getRecommendations(donation_history_dict, possible_events) { // Sorted 
   var unused_buffer = [];
   var add_to_rec = true;
   for (var i = 0; i<15; i++) {
-    if ((possible_events[i][type] == max) || (possible_events[i][type] == max_2)) {
-      rec_arr.append(i);
-    } else {
-      save_to_unused.append(i)
+    if (i<possible_events.length){
+      if ((possible_events[i]["type"] == max) || (possible_events[i]["type"] == max_2)) {
+        rec_arr.push(i);
+      } else {
+        unused_buffer.push(i)
+      }
     }
   }
 
   var buffer_counter = 0;
   while(add_to_rec){
-    if(len(rec_arr)>9){
+    if(rec_arr.length>9){
       add_to_rec = false;
     } else {
-      if(buffer_counter<len(unused_buffer)){
-        rec_arr.append(unused_buffer[buffer_counter]);
+      if(buffer_counter<unused_buffer.length){
+        rec_arr.push(unused_buffer[buffer_counter]);
         buffer_counter ++;
       }
+    }
+    if(rec_arr.length>possible_events.length - 1){
+      add_to_rec = false;
     }
   }
 
   return rec_arr;
 }
 
-function generate_possible_events() {
-  // fill in with code to sort a given array of events by "trend". the trend property of an event is not yet initialized in firebase
-}
-
 async function send_donate_notif() {
   Email.send("email.paragon.official@gmail.com",
     await firebase.database().ref('donation_requests/email').once("value").then(function(snapshot){
-      return snapshot.val();
+      var email = snapshot.val();
     }),
-    "Someone has shown interest in your organization",
-    firebase.auth().currentUser.email + ' wishes to send you a donation! \n Congratulations! \n Feel free to reach out to this individual',
-  "smtp.yourisp.com",
-  "username",
-  "password");
+    "This is a subject",
+    "this is the body",
+    "smtp.yourisp.com",
+    "username",
+    "password");
+}
+
+function send_donate_notif() {
+
 }
