@@ -6,6 +6,7 @@ function login() {
     var errorMessage = error.message;
     alert(errorMessage);
   });
+
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -20,11 +21,14 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log(getRecommendations(test_donation_history_dict, test_possible_events));
     alert("here");
     add_listeners();
+    window.location.href = 'clone.html';
+
   } else {
     $("#logout_button").css("display", "none");
     $("#login_button").css("display", "block");
     $("#signup_button").css("display", "block");
     add_listeners();
+
   }
 });
 
